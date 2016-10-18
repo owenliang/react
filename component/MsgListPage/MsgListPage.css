@@ -1,0 +1,42 @@
+#PullDown {
+    margin:0px;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    background-color: white;
+    line-height: 40px;
+}
+
+#PullUp {
+    margin:0px;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    background-color: white;
+    line-height: 40px;
+}
+
+#ListOutsite {
+    position:relative;
+}
+
+#ListInside {
+    list-style: none;
+    margin:0;
+    padding:0;
+    min-height: 150%;
+}
+
+#ListInside li {
+    height: 80px;
+    padding: 0 10%;
+    width: 80%;
+    vertical-align: middle;
+    line-height: 80px;
+    font-size: 18px;
+    border: 1px solid lightsteelblue;
+    overflow: hidden;
+    background-color: blanchedalmond;
+}

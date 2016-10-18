@@ -1,0 +1,49 @@
+#SliderWrapper {
+    position:relative;
+    overflow:hidden;
+}
+
+#SliderList {
+    position:absolute;
+    list-style:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    width: 10000px;
+    height: 100%;
+}
+
+#SliderWrapper li {
+    float: left;
+}
+
+#SliderWrapper #SliderList img {
+    display: block;
+}
+
+#SliderProgress {
+    position: absolute;
+    overflow:hidden;
+    bottom: 0;
+    left: 0;
+    padding:0;
+    margin: 0;
+    list-style: none;
+}
+
+#SliderProgress li {
+    float: right;
+    margin-bottom: 2px;
+    margin-right: 2px;
+    height: 6px;
+    width: 6px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: 1px white solid;
+}
+
+#SliderProgress li.Active {
+    background-color: white;
+}

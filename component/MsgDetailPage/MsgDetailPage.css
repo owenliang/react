@@ -1,0 +1,23 @@
+#MsgContainer {
+    background-color: blanchedalmond;
+    display: table;
+    width: 90%;
+    padding: 15px 5% 15px 5%;
+}
+#MsgTitle {
+    text-align: center;
+    padding: 5px;
+    background-color: cornsilk;
+    margin: 0;
+    font-size: 30px;
+    line-height:50px;
+    border-bottom: 1px solid grey;
+}
+#MsgContent {
+    display: table-cell;
+    vertical-align: middle;
+    word-break:break-all;
+    word-wrap: break-word;
+    font-size: 20px;
+    line-height: 30px;
+}

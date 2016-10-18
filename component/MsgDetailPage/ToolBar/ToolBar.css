@@ -1,0 +1,9 @@
+#BackImg {
+    display: block;
+    height:30px;
+    width: 30px;
+}
+#ToolBarContainter {
+    background-color: darkorange;
+    border-bottom: 1px solid grey;
+}
