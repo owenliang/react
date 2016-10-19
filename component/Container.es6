@@ -1,5 +1,4 @@
 import React from "react";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 export default class Container extends React.Component {
     constructor(props, context) {
