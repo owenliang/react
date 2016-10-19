@@ -17,6 +17,7 @@ class MsgListPage extends React.Component {
 
         // 尝试加载备份的数据
         // action: MSG_LIST_PAGE_TRY_RESTORE_COMPONENT
+        this.props.tryRestoreComponent();
 
         this.itemsChanged = false;  // 本次渲染是否发生了文章列表变化，决定iscroll的refresh调用
         this.isTouching = false; // 是否在触屏中
@@ -81,8 +82,6 @@ class MsgListPage extends React.Component {
      * react组件第一次加载调用
      */
     componentDidMount() {
-        this.props.tryRestoreComponent();
-
         // 首次进入列表页，那么异步加载数据
         if (this.props.isLoading) {
             this.props.beginRefresh();

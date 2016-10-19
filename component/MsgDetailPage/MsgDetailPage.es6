@@ -13,13 +13,13 @@ import * as actions from "./action";
 class MsgDetailPage extends React.Component {
     constructor(props, context) {
         super(props, context);
-    }
 
-    componentDidMount() {
         // 在这里先重置上一次阅读留下的state信息
         // action: MSG_DETAIL_PAGE_INIT_STATE
         this.props.initState();
+    }
 
+    componentDidMount() {
         // 调整Loading界面高度
         // action: MSG_DETAIL_PAGE_ADJUST_LOADING_HEIGHT
         let ToolBar = $(this.refs.ToolBar.refs.ToolBarContainter);
