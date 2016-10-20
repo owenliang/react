@@ -4,12 +4,12 @@ import $ from "jquery";
 import style from "./MsgListPage.css";
 import iScroll from "iscroll/build/iscroll-probe"; // 只有这个库支持onScroll,从而支持bounce阶段的事件捕捉
 import LoadingLayer from "../LoadingLayer/LoadingLayer";
-import loadingImg from "../../common/img/loading.svg";
+import loadingImg from "../../common/img/LoadingLayer/loading.svg";
 
 // redux相关
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actions from "./action";
+import * as actions from "../../action/MsgListPageAction";
 
 class MsgListPage extends React.Component {
     constructor(props, context) {

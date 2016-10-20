@@ -1,4 +1,4 @@
-import * as consts from "../../common/consts";
+import * as consts from "../common/consts/ActionTypes";
 import $ from "jquery";
 
 /**
@@ -24,7 +24,7 @@ export function fetchDetail(msgId) {
         setTimeout(() => {
             $.ajax({
                 type: 'GET',
-                url: '/msg-detail',
+                url: '/test/msg-detail',
                 data: {'msgId': msgId},
                 dataType: 'json',
                 success: (response) => {

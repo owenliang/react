@@ -1,4 +1,4 @@
-import * as consts from "../../common/consts";
+import * as consts from "../common/consts/ActionTypes";
 
 // 组件初始化状态，其实就是把component的constructor的挪到这里就完事了
 const initState = {
@@ -54,13 +54,11 @@ function MSG_LIST_PAGE_BACKUP_ISCROLL_Y_reducer(state, action) {
     return Object.assign({}, state, {y: action.y});
 }
 
-
-
 // Reducer函数
 // 1, 在redux初始化，路由切换等时机，都会被唤醒，从而有机会返回初始化state，
 //    这将领先于componnent从而可以props传递
 // 2, 这里redux框架传来的是state对应Reducer的子集合
-export default function MsgListPageReduer(state = initState, action) {
+export default function MsgListPageReducer(state = initState, action) {
     switch (action.type) {
         case consts.MSG_LIST_PAGE_TRY_RESTORE_COMPONENT:
             return MSG_LIST_PAGE_TRY_RESTORE_COMPONENT_reducer(state, action);

@@ -5,7 +5,7 @@ import style from "./Slider.css";
 // redux相关
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actions from "./action";
+import * as actions from "../../action/SliderAction";
 
 class Slider extends React.Component {
     constructor(props, context) {
@@ -205,14 +205,15 @@ class Slider extends React.Component {
         }
 
         // 图片列表
-        let imgBlocks = imgs.map((src, index) => {
+        let imgBlocks = imgs.map((imgInfo, index) => {
             let refName = `IMG_${index}`;
             return (
                 <li key={index}>
                     <img
-                        src={src}
+                        src={imgInfo.src}
                         ref={refName}
                         style={wrapStyle}
+                        onClick={imgInfo.handler}
                     />
                 </li>
             );

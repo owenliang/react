@@ -1,4 +1,4 @@
-import * as consts from "../../common/consts";
+import * as consts from "../common/consts/ActionTypes";
 
 // 组件初始化状态，其实就是把component的constructor的挪到这里就完事了
 const initState = {

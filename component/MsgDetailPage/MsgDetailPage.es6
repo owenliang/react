@@ -2,13 +2,13 @@ import React from "react";
 import {Link} from "react-router";
 import $ from "jquery";
 import style from "./MsgDetailPage.css";
-import ToolBar from "./ToolBar/ToolBar";
+import ToolBar from "../ToolBar/ToolBar";
 import LoadingLayer from "../LoadingLayer/LoadingLayer";
 
 // redux相关
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actions from "./action";
+import * as actions from "../../action/MsgDetailPageAction";
 
 class MsgDetailPage extends React.Component {
     constructor(props, context) {
@@ -94,11 +94,11 @@ function mapStateToProps(state, ownProps) {
     console.log(state);
     return {
         msgId: ownProps.params.msgId,   // 访问react-router的参数是可以的
-        contentHeight: state.MsgDetailPageReduer.contentHeight,
-        isLoading: state.MsgDetailPageReduer.isLoading,
-        outerStyle: state.MsgDetailPageReduer.outerStyle,
-        msgTitle: state.MsgDetailPageReduer.msgTitle,
-        msgContent: state.MsgDetailPageReduer.msgContent,
+        contentHeight: state.MsgDetailPageReducer.contentHeight,
+        isLoading: state.MsgDetailPageReducer.isLoading,
+        outerStyle: state.MsgDetailPageReducer.outerStyle,
+        msgTitle: state.MsgDetailPageReducer.msgTitle,
+        msgContent: state.MsgDetailPageReducer.msgContent,
     };
 }
 

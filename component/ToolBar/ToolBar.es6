@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router";
 import $ from "jquery";
-import backImg from "./back.png";
+import backImg from "../../common/img/ToolBar/back.png";
 import style from "./ToolBar.css";
 
 export default class ToolBar extends React.Component {

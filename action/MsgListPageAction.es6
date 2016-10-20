@@ -1,4 +1,4 @@
-import * as consts from "../../common/consts";
+import * as consts from "../common/consts/ActionTypes";
 import $ from "jquery";
 
 /**
@@ -14,7 +14,7 @@ export function tryRestoreComponent() {
 function _fetchItems(page, dispatch) {
     setTimeout(() => {  // 模拟延迟0.5秒
         $.ajax({
-            url: '/msg-list',
+            url: '/test/msg-list',
             data: {page: page},
             type: 'GET',
             dataType: 'json',

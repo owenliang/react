@@ -1,4 +1,4 @@
-import * as consts from "../../common/consts";
+import * as consts from "../common/consts/ActionTypes";
 
 // 组件初始化状态，其实就是把component的constructor的挪到这里就完事了
 const initState = {
@@ -37,7 +37,7 @@ function MSG_DETAIL_PAGE_INIT_STATE_reducer(state, action) {
 // 1, 在redux初始化，路由切换等时机，都会被唤醒，从而有机会返回初始化state，
 //    这将领先于componnent从而可以props传递
 // 2, 这里redux框架传来的是state对应Reducer的子集合
-export default function MsgDetailPageReduer(state = initState, action) {
+export default function MsgDetailPageReducer(state = initState, action) {
     switch (action.type) {
         // 调整Loading界面高度
         case consts.MSG_DETAIL_PAGE_ADJUST_LOADING_HEIGHT:

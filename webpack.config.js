@@ -4,7 +4,7 @@ var webpack = require("webpack");
 
 module.exports = {
  entry: {
-     main: './common/Router.es6',  // 入口配置路由
+     main: './common/entry/Router.es6',  // 入口配置路由
  },
  output: {
      // 项目输出到output目录
@@ -27,8 +27,11 @@ module.exports = {
        exclude: /node_modules/,
        loader: 'babel-loader',
        query: {
-          cacheDirectory: true, 
-          presets: ['react', 'es2015'] 
+            cacheDirectory: true,
+            presets: ['react', 'es2015'],
+            plugins: [
+               ["transform-object-rest-spread", { "useBuiltIns": true }]
+            ]
        }
       },
        {
@@ -53,7 +56,7 @@ module.exports = {
         title: 'App',
         filename : 'index.html',
         inject: 'body', // bundle.[js|css]注入到body部分
-        template: 'common/index-template.html', // 基于模板文件生成
+        template: 'common/entry/index-template.html', // 基于模板文件生成
         chunks: ['main'] // 在entry里我定义过了main这个chunk
     }),
  ],

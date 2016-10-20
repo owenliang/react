@@ -1,7 +1,7 @@
 import React from "react";
 import $ from "jquery";
 import style from "./LoadingLayer.css";
-import loadingImg from "../../common/img/loading.svg";
+import loadingImg from "../../common/img/LoadingLayer/loading.svg";
 
 export default class LoadingLayer extends React.Component {
     constructor(props, context) {

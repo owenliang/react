@@ -1,4 +1,4 @@
-import * as consts from "../../common/consts";
+import * as consts from "../common/consts/ActionTypes";
 import $ from "jquery";
 
 export function initState(imgsCount) {
