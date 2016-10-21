@@ -29,6 +29,7 @@ class MsgListPage extends React.Component {
             2: '松手即可刷新',
             3: '正在刷新',
             4: '刷新成功',
+            5: '刷新失败'
         };
         // 上拉状态文案
         this.pullUpTips = {
@@ -36,6 +37,7 @@ class MsgListPage extends React.Component {
             1: '松手即可加载',
             2: '正在加载',
             3: '加载成功',
+            4: '加载失败'
         };
 
         // 点击文章跳转处理
@@ -83,7 +85,7 @@ class MsgListPage extends React.Component {
      */
     componentDidMount() {
         // 首次进入列表页，那么异步加载数据
-        if (this.props.isLoading) {
+        if (this.props.loadingStatus == 1) {
             this.props.beginRefresh();
         } else {
             this.ensureIScrollInstalled();
@@ -150,6 +152,8 @@ class MsgListPage extends React.Component {
         // 下拉区域
         if (this.iScrollInstance.y <= this.iScrollInstance.maxScrollY + 5) {
             this.onPullUp();
+        } else {
+            this.props.updatePullUpStatus(0);
         }
     }
 
@@ -183,13 +187,13 @@ class MsgListPage extends React.Component {
 
     componentDidUpdate() {
         // 加载屏结束,才可以初始化iscroll
-        if (!this.props.isLoading) {
+        if (this.props.loadingStatus == 2) {
             this.ensureIScrollInstalled();
-            // 仅当列表发生了变更，才调用iscroll的refresh重新计算滚动条信息
+            // 当列表发生了变更 ，才调用iscroll的refresh重新计算滚动条信息
             if (this.itemsChanged) {
                 this.iScrollInstance.refresh();
-                // 如果此前获取的是第一页，那么说明是刷新操作，需要回弹
-                if (this.props.page == 2) {
+                // 此前是刷新操作，需要回弹
+                if (this.props.pullDownStatus == 4 || this.props.pullDownStatus == 5) {
                     this.iScrollInstance.scrollTo(0, -1 * $(this.refs.PullDown).height(), 500);
                 }
             }
@@ -198,9 +202,16 @@ class MsgListPage extends React.Component {
     }
 
     componentWillUnmount() {
-        if (!this.props.isLoading) {
+        if (this.props.loadingStatus == 2) {    // 首屏成功刷出，则备份y
             this.props.backupIScrollY(this.iScrollInstance.y);
         }
+    }
+
+    // retry if loading failed
+    onRetryLoading() {
+        console.log("retry loading");
+        this.props.updateLoadingStatus(1); // 恢复loading界面
+        this.props.beginRefresh(); // 发起数据刷新
     }
 
     renderLoading() {
@@ -209,7 +220,11 @@ class MsgListPage extends React.Component {
         };
         return (
             <div>
-                <LoadingLayer outerStyle={outerStyle}/>
+                <LoadingLayer
+                    outerStyle={outerStyle}
+                    onRetry={this.onRetryLoading.bind(this)}
+                    loadingStatus={this.props.loadingStatus}
+                />
             </div>
         );
     }
@@ -239,7 +254,8 @@ class MsgListPage extends React.Component {
     }
 
     render() {
-        if (this.props.isLoading) {
+        // 首屏没有加载成功，那么均展示loading效果
+        if (this.props.loadingStatus != 2) {
             return this.renderLoading();
         } else {
             return this.renderPage();
@@ -258,7 +274,7 @@ function mapStateToProps(state, ownProps) {
         items: state.MsgListPageReducer.items,
         pullDownStatus: state.MsgListPageReducer.pullDownStatus,  // 下拉状态
         pullUpStatus: state.MsgListPageReducer.pullUpStatus,    // 上拉状态
-        isLoading: state.MsgListPageReducer.isLoading,   // 是否处于首屏加载中
+        loadingStatus: state.MsgListPageReducer.loadingStatus,   // 首屏加载状态
         page: state.MsgListPageReducer.page,
         y: state.MsgListPageReducer.y,
     };

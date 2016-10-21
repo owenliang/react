@@ -20,8 +20,14 @@ function _fetchItems(page, dispatch) {
             dataType: 'json',
             success: (response) => {
                 dispatch({
-                    type: consts.MSG_LIST_PAGE_FETCH_ITEMS,
+                    type: consts.MSG_LIST_PAGE_FETCH_ITEMS_SUCCESS,
                     items: response.data.items,
+                    page: page,
+                });
+            },
+            error: () => {
+                dispatch({
+                    type: consts.MSG_LIST_PAGE_FETCH_ITEMS_FAIL,
                     page: page,
                 });
             }
@@ -52,6 +58,14 @@ export function beginLoad() {
         });
         // 异步网络请求
         _fetchItems(getState().MsgListPageReducer.page, dispatch);
+    };
+}
+
+// 更新loading状态
+export function updateLoadingStatus(nextStatus) {
+    return {
+        type: consts.MSG_LIST_PAGE_UPDATE_LOADING_STATUS,
+        nextStatus: nextStatus,
     };
 }
 

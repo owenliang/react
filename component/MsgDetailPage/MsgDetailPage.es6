@@ -32,7 +32,7 @@ class MsgDetailPage extends React.Component {
 
     componentDidUpdate() {
         // 加载完成
-        if (!this.props.isLoading) {
+        if (this.props.loadingStatus == 2) {
             let title = $(this.refs.MsgTitle);
             let container = $(this.refs.MsgContainer);
             let ToolBar = $(this.refs.ToolBar.refs.ToolBarContainter);
@@ -53,11 +53,20 @@ class MsgDetailPage extends React.Component {
         }
     }
 
+    onRetryLoading() {
+        this.props.resetLoadingStatus();
+        this.props.fetchDetail(this.props.MsgId);
+    }
+
     renderLoading() {
         return (
             <div>
                 <ToolBar ref="ToolBar"/>
-                <LoadingLayer outerStyle={this.props.outerStyle}/>
+                <LoadingLayer
+                    outerStyle={this.props.outerStyle}
+                    loadingStatus={this.props.loadingStatus}
+                    onRetry={this.onRetryLoading.bind(this)}
+                />
             </div>
         );
     }
@@ -76,7 +85,7 @@ class MsgDetailPage extends React.Component {
     }
 
     render() {
-        if (this.props.isLoading) {
+        if (this.props.loadingStatus != 2) {
             return this.renderLoading();
         } else {
             return this.renderPage();
@@ -91,11 +100,10 @@ MsgDetailPage.contextTypes = {
 // 将redux store里的state映射到本组件的Props上
 // 注：这里传来的state是全局store，从而可以共享所有全局状态的访问!
 function mapStateToProps(state, ownProps) {
-    console.log(state);
     return {
         msgId: ownProps.params.msgId,   // 访问react-router的参数是可以的
         contentHeight: state.MsgDetailPageReducer.contentHeight,
-        isLoading: state.MsgDetailPageReducer.isLoading,
+        loadingStatus: state.MsgDetailPageReducer.loadingStatus,
         outerStyle: state.MsgDetailPageReducer.outerStyle,
         msgTitle: state.MsgDetailPageReducer.msgTitle,
         msgContent: state.MsgDetailPageReducer.msgContent,

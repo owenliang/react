@@ -29,7 +29,7 @@ export function fetchDetail(msgId) {
                 dataType: 'json',
                 success: (response) => {
                     dispatch({
-                        type: consts.MSG_DETAIL_PAGE_FETCH_DETAIL,
+                        type: consts.MSG_DETAIL_PAGE_FETCH_DETAIL_SUCCESS,
                         title: response.data.title,
                         content: response.data.content,
                     });
@@ -37,6 +37,9 @@ export function fetchDetail(msgId) {
                 },
                 error: () => {
                     console.log(`msg-detail?msgId=${msgId} 请求异常`);
+                    dispatch({
+                        type: consts.MSG_DETAIL_PAGE_FETCH_DETAIL_FAIL,
+                    });
                 }
             });
         }, 1000);
@@ -62,5 +65,11 @@ export function adjustContentHeight(height) {
 export function initState() {
     return {
         type: consts.MSG_DETAIL_PAGE_INIT_STATE
+    };
+}
+
+export function resetLoadingStatus() {
+    return {
+        type: consts.MSG_DETAIL_PAGE_RESET_LOADING_STATUS
     };
 }
