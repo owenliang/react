@@ -17,7 +17,19 @@ export default class LoadingLayer extends React.Component {
 
         let loadingTips = (<span>wait to start loading</span>);
         if (loadingStatus == 1) {
-            loadingTips = (<img src={loadingImg}/>);
+            loadingTips = (
+                <div className={style.overlayLoader}>
+                    <div className={style.loader}>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            );
         } else if (loadingStatus == 2){
             loadingTips = (<span>loading done, switch to your component</span>);
         } else if (loadingStatus == 3) {
