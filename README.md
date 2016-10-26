@@ -1,1 +1,1 @@
-react demo - dev branch
+react demo - release branch
