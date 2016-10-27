@@ -24,7 +24,7 @@ export function fetchDetail(msgId) {
         setTimeout(() => {
             $.ajax({
                 type: 'GET',
-                url: '/test/msg-detail',
+                url: 'test/msg-detail',
                 data: {'msgId': msgId},
                 dataType: 'json',
                 success: (response) => {
