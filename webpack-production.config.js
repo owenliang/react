@@ -26,4 +26,8 @@ var definePlugin = new webpack.DefinePlugin({
 });
 devConfig.plugins.push(definePlugin);
 
+// 静态资源js/css/img可以CDN加速
+// 如果需要，那么可以赋值非空，例如：http://cdn.yuerblog.cc
+devConfig.output.publicPath = "";
+
 module.exports = devConfig;
