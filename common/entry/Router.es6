@@ -20,6 +20,7 @@ import Container from "./Container";
 import MsgListPage from "../../component/MsgListPage/MsgListPage";
 import MsgDetailPage from "../../component/MsgDetailPage/MsgDetailPage";
 import MsgCreatePage from "../../component/MsgCreatePage/MsgCreatePage";
+import MenuPage from "../../component/MenuPage/MenuPage";
 
 // 引入reducer
 import * as reducers from "../../reducer";
@@ -52,6 +53,7 @@ ReactDOM.render(
                     <Route path="msg-list-page" component={MsgListPage}/>
                     <Route path="msg-detail-page/:msgId" component={MsgDetailPage}/>
                     <Route path="msg-create-page" component={MsgCreatePage}/>
+                    <Route path="menu-page" component={MenuPage}/>
                 </Route>
             </Router>
         </Provider>
