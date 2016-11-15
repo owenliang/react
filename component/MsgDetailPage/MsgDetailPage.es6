@@ -13,7 +13,9 @@ import * as actions from "../../action/MsgDetailPageAction";
 class MsgDetailPage extends React.Component {
     constructor(props, context) {
         super(props, context);
+    }
 
+    componentWillMount() {
         // 在这里先重置上一次阅读留下的state信息
         // action: MSG_DETAIL_PAGE_INIT_STATE
         this.props.initState();

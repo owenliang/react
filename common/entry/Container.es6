@@ -1,4 +1,6 @@
 import React from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import style from "./Container.css";
 
 export default class Container extends React.Component {
     constructor(props, context) {
@@ -15,11 +17,20 @@ export default class Container extends React.Component {
 
     render() {
         return (
-            <div id="reactContainer">
-                {
-                    this.props.children
-                }
-            </div>
+            <ReactCSSTransitionGroup
+                transitionName="transitionWrapper"
+                component="div"
+                className={style.transitionWrapper}
+                transitionEnterTimeout={300000}
+                transitionLeaveTimeout={300000}>
+                <div key={this.props.location.pathname}
+                     style={{position:"absolute", width: "100%"}}>
+                    {
+                        this.props.children
+                    }
+                </div>
+            </ReactCSSTransitionGroup>
         );
     }
+
 }
