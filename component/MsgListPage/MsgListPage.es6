@@ -15,10 +15,6 @@ class MsgListPage extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        // 尝试加载备份的数据
-        // action: MSG_LIST_PAGE_TRY_RESTORE_COMPONENT
-        this.props.tryRestoreComponent();
-
         this.itemsChanged = false;  // 本次渲染是否发生了文章列表变化，决定iscroll的refresh调用
         this.isTouching = false; // 是否在触屏中
 
@@ -50,6 +46,12 @@ class MsgListPage extends React.Component {
         // 触屏事件
         this.onTouchStart = this.onTouchStart.bind(this);
         this.onTouchEnd = this.onTouchEnd.bind(this);
+    }
+
+    componentWillMount() {
+        // 尝试加载备份的数据
+        // action: MSG_LIST_PAGE_TRY_RESTORE_COMPONENT
+        this.props.tryRestoreComponent();
     }
 
     /**
