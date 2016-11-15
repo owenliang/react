@@ -1,6 +1,6 @@
 :global(.transitionWrapper-enter) {
     opacity: 0.01;
-    transition: opacity 30000ms ease-in;
+    transition: opacity 300ms ease-in;
 }
 
 :global(.transitionWrapper-enter.transitionWrapper-enter-active) {
@@ -9,7 +9,7 @@
 
 :global(.transitionWrapper-leave) {
     opacity: 1;
-    transition: opacity 30000ms ease-in;
+    transition: opacity 300ms ease-in;
 }
 
 :global(.transitionWrapper-leave.transitionWrapper-leave-active) {

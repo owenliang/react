@@ -21,8 +21,8 @@ export default class Container extends React.Component {
                 transitionName="transitionWrapper"
                 component="div"
                 className={style.transitionWrapper}
-                transitionEnterTimeout={300000}
-                transitionLeaveTimeout={300000}>
+                transitionEnterTimeout={300}
+                transitionLeaveTimeout={300}>
                 <div key={this.props.location.pathname}
                      style={{position:"absolute", width: "100%"}}>
                     {
